@@ -8,5 +8,6 @@ def index(request):
 
 
 def about(request):
-    url = "<a href='/rango/'>Index</a>"
-    return HttpResponse("HttpResponse:'Rango says here is the about page.' "+url)
+    #chapter2 url = "<a href='/rango/'>Index</a>"
+    context_dict = {'boldmessage': 'This tutorial has been put together by Yongyan Lin'}
+    return render(request, 'rango/about.html', context=context_dict)
