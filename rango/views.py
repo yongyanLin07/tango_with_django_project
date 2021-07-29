@@ -20,7 +20,7 @@ def index(request):
     context_dict['pages'] = page_list
     
     visitor_cookie_handler(request)
-    context_dict['visits'] = request.session['visits']
+    #context_dict['visits'] = request.session['visits']
     response = render(request, 'rango/index.html', context=context_dict)
 
     return response
@@ -28,10 +28,10 @@ def index(request):
 
 def about(request):
     #chapter2 url = "<a href='/rango/'>Index</a>"
-    if request.session.test_cookie_worked(): 
-        print("TEST COOKIE WORKED!") 
-        request.session.delete_test_cookie()
-    context_dict = {'boldmessage': 'This tutorial has been put together by Yongyan Lin'}
+    visitor_cookie_handler(request)
+    context_dict = {}
+    context_dict['visits'] = request.session['visits']
+    context_dict['boldmessage'] = 'This tutorial has been put together by Yongyan Lin'
     return render(request, 'rango/about.html', context=context_dict)
 
 def show_category(request, category_name_slug):
